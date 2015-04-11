@@ -20,8 +20,9 @@ test:
 
 production:
   adapter: postgresql
-  database: project_production
+  database: d7ienk0m1bjm0n
+  port: 5432
   pool: 5
-  username:
-  password:
+  username: rjrwcdgyydsuxw
+  password: ENV["DB_PASS"]
   timeout: 5000
