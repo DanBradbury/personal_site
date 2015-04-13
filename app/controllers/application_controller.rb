@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def initialize(*args)
-    @renderer ||= Redcarpet::Render::HTML.new({})
+    @renderer ||= Redcarpet::Render::HTML.new({:hard_wrap => true, :prettify => true})
     @markdown_renderer ||= Redcarpet::Markdown.new(@renderer, {})
   end
 

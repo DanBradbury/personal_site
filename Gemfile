@@ -14,6 +14,7 @@ group :production do
 end
 
 gem 'redcarpet'
+gem 'test-unit'
 
 # Gems used only for assets and not required
 # in production environments by default.
