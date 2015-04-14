@@ -32,6 +32,13 @@
       a:-webkit-any-link{
         color: black;
       }
+      .modal {
+        width: 100px;
+        height: 100px;
+        margin: auto;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+      }
 
       .home-site-header {
         width: 300px;
@@ -56,9 +63,40 @@
       .home-name a:link {
         text-decoration: none;
       }
+
+
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript">
+      function callFunc() {
+        $(".home-site-bio").hide();
+        $(".modal").toggle();
+        $(".home-site-header").animate({ "margin-top": "0px"}, 1000, function() {
+        });
+        var xmlhttp;
+        if (window.XMLHttpRequest)
+          {// code for IE7+, Firefox, Chrome, Opera, Safari
+          xmlhttp=new XMLHttpRequest();
+          }
+        else
+          {// code for IE6, IE5
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+          }
+        xmlhttp.onreadystatechange=function()
+          {
+          if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+              setTimeout(function() {
+                $(".modal").toggle();
+                document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+              }, 1000);
+            }
+        }
+        xmlhttp.open("GET","/posts",true);
+        xmlhttp.send();
+
+      }
+
       function showDetails() {
         if(jQuery(".home-site-bio").is(":hidden")){
           $(".home-site-header").animate({ "margin-top": "0px"}, 1000, function() {
@@ -77,6 +115,7 @@
         var width = $(".home-site-header").width()*2.75;
         $(".home-site-bio").css("left", width);
       });
+
     </script>
   </head>
   <body>
@@ -90,7 +129,7 @@
         </p>
       </div>
       <ul class="home-site-navigation">
-        <li><a href="/posts">Development Blog</a></li>
+        <li><a href="javascript:callFunc()">Development Blog</a></li>
         <li>Projects</li>
         <li>Sites</li>
       </ul>
@@ -100,5 +139,10 @@
     <div class="home-random-thoughts">
       Random Thoughts
     </div>
+
+    <div class="modal" style="display:none">
+      <img src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif">
+    </div>
+    <div id="myDiv" style="margin-top:150px;"></div>
   </body>
 </html>
