@@ -1,4 +1,5 @@
 > Arguing with an engineer is a lot like wrestling a pig in the mud; after a couple of hours you realize the pig likes it.
+
 Programming is not for everyone. Most people write off the idea of pursing a career in computing because they couldn't imagine "staring at a computer screen all day". To be fair if you are not font of computer screens then things would be quite problematic but ...
 
     count = 0
