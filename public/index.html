@@ -88,7 +88,7 @@
             {
               setTimeout(function() {
                 $(".modal").toggle();
-                document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+                document.getElementById("developmentContent").innerHTML=xmlhttp.responseText;
               }, 1000);
             }
         }
@@ -99,11 +99,13 @@
 
       function showDetails() {
         if(jQuery(".home-site-bio").is(":hidden")){
+          document.getElementById("developmentContent").innerHTML = "";
           $(".home-site-header").animate({ "margin-top": "0px"}, 1000, function() {
-            $(".home-site-bio").slideDown(400);
+            $(".home-site-bio").toggle();
             $(".home-site-navigation").css("margin-top", 20);
           });
         }else{
+          document.getElementById("developmentContent").innerHTML = "";
           $(".home-site-bio").slideUp(400, function() {
             $(".home-site-navigation").css("margin-top", -20);
             $(".home-site-header").animate({ "margin-top": "290px"}, 1000);
@@ -143,6 +145,6 @@
     <div class="modal" style="display:none">
       <img src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif">
     </div>
-    <div id="myDiv" style="margin-top:150px;"></div>
+    <div id="developmentContent" style="margin-top:150px;"></div>
   </body>
 </html>
