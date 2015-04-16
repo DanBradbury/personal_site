@@ -32,6 +32,14 @@
       a:-webkit-any-link{
         color: black;
       }
+
+      .footer {
+        position: relative;
+        <!--margin-top: -0px; /* negative value of footer height */-->
+        height: 150px;
+        clear:both;}
+      }
+
       .modal {
         width: 100px;
         height: 100px;
@@ -78,9 +86,9 @@
       function openBlog() {
         $(".home-site-bio").hide();
         $(".modal").toggle();
-        debugger;
         $(".home-site-header").animate({ "margin-top": "0px"}, 1000, function() {
         });
+        $('.footer').append($('.nav-container'));
         var xmlhttp;
         if (window.XMLHttpRequest)
           {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -129,32 +137,36 @@
     </script>
   </head>
   <body>
-    <div class="home-site-header">
-      <h1 class="home-name"><a href="javascript:showDetails();">DAN BRADBURY</a></h1>
-      <div class="home-site-bio" style="display:none">
-        <h3>is a..</h3>
-        <p style="margin-top:-20px;">
-        opinionated programmer who dives into whatever is interesting today..</br></br>
-        I love a good survival horror game and am always up for a challenge. I'm lucky enough to do what I love every day and hope to share some helpful info along the way.
-        </p>
+    <div id="wrap">
+      <div class="home-site-header">
+        <h1 class="home-name"><a href="javascript:showDetails();">DAN BRADBURY</a></h1>
+        <div class="home-site-bio" style="display:none">
+          <h3>is a..</h3>
+          <p style="margin-top:-20px;">
+          opinionated programmer who dives into whatever is interesting today..</br></br>
+          I love a good survival horror game and am always up for a challenge. I'm lucky enough to do what I love every day and hope to share some helpful info along the way.
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="nav-container">
-      <ul class="home-site-navigation">
-        <li><a href="javascript:openBlog()">Development Blog</a></li>
-        <li>Projects</li>
-        <li>Sites</li>
-      </ul>
-    </div>
+      <div class="nav-container">
+        <ul class="home-site-navigation">
+          <li><a href="javascript:openBlog()">Development Blog</a></li>
+          <li>Projects</li>
+          <li>Sites</li>
+        </ul>
+      </div>
 
 
-    <div class="home-random-thoughts">
-      Random Thoughts
-    </div>
+      <div class="home-random-thoughts">
+        Random Thoughts
+      </div>
 
-    <div class="modal" style="display:none">
-      <img src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif">
+      <div class="modal" style="display:none">
+        <img src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif">
+      </div>
+      <div id="developmentContent" style="margin-top:150px;"></div>
+    </div> <!-- End of wrap -->
+    <div class="footer">
     </div>
-    <div id="developmentContent" style="margin-top:150px;"></div>
   </body>
 </html>
