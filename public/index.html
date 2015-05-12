@@ -85,10 +85,16 @@
     <script type="text/javascript">
       function openBlog() {
         $(".home-site-bio").hide();
-        $(".modal").toggle();
-        $(".home-site-header").animate({ "margin-top": "0px"}, 1000, function() {
+        $('.nav-container').hide();
+        var modal = $(".modal");
+        var leftPadding = $('.home-name a').width()/2-48; /* magic!! */
+        modal.attr("margin-left", leftPadding);
+        modal.toggle();
+        $(".home-site-header").animate({ "margin-top": "0px"}, 500, function() {
+          $("#home-name").attr("margin-top", "0px");
         });
         $('.footer').append($('.nav-container'));
+
         var xmlhttp;
         if (window.XMLHttpRequest)
           {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -115,17 +121,17 @@
 
       function showDetails() {
         if(jQuery(".home-site-bio").is(":hidden")){
-          document.getElementById("developmentContent").innerHTML = "";
-          $(".home-site-header").animate({ "margin-top": "0px"}, 1000, function() {
-            $(".home-site-bio").toggle();
-            $(".home-site-navigation").css("margin-top", 20);
-          });
+          if($(".nav-container").is(":hidden")){
+            jQuery('#bioDescription').toggle();
+          }else{
+            document.getElementById("developmentContent").innerHTML = "";
+            document.getElementById("bioDescription").innerHTML = "that mutha fucka you wish you knew.."
+            jQuery('#bioDescription').toggle();
+            jQuery('.nav-container').toggle();
+          }
         }else{
           document.getElementById("developmentContent").innerHTML = "";
-          $(".home-site-bio").slideUp(400, function() {
-            $(".home-site-navigation").css("margin-top", -20);
-            $(".home-site-header").animate({ "margin-top": "290px"}, 1000);
-          });
+          jQuery('.nav-container').toggle();
         }
       }
 
@@ -139,7 +145,13 @@
   <body>
     <div id="wrap">
       <div class="home-site-header">
-        <h1 class="home-name"><a href="javascript:showDetails();">DAN BRADBURY</a></h1>
+        <!--<h1 class="home-name"><a href="javascript:showDetails();">DAN BRADBURY</a></h1>-->
+        <h1 class="home-name">DAN BRADBURY</h1>
+        <div class="modal" style="display:none">
+          <img style="display:block; margin-left:auto; margin-right:auto;padding-right:48px;"alt="loader" src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif">
+        </div>
+        <div id="bioDescription" style="display:none">
+        </div>
         <div class="home-site-bio" style="display:none">
           <h3>is a..</h3>
           <p style="margin-top:-20px;">
@@ -150,7 +162,7 @@
       </div>
       <div class="nav-container">
         <ul class="home-site-navigation">
-          <li>Development Blog</li>
+          <li><a href="javascript:openBlog()">Development Blog</a></li>
           <li>Projects</li>
           <li>Sites</li>
         </ul>
@@ -161,9 +173,6 @@
         Random Thoughts
       </div>
 
-      <div class="modal" style="display:none">
-        <img src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif">
-      </div>
       <div id="developmentContent" style="margin-top:150px;"></div>
     </div> <!-- End of wrap -->
     <div class="footer">
